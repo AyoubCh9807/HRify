@@ -17,12 +17,14 @@ type Member = {
   teamId: string;
 };
 
-type BulkEmailModalProps = {
+export type BulkEmailModalProps = {
   activated: boolean;
-  setActivated: (b: boolean) => void;
+  setActivated: React.Dispatch<React.SetStateAction<boolean>>;
   teams: Team[];
   members: Member[];
-  showToast: (msg: string, type: "success" | "error") => void;
+  selectedTeamId: string | null;
+  selectedMembers: string[];
+  showToast: (message: string, type: "success" | "error") => void;
 };
 
 export const BulkEmailModal = ({
@@ -51,8 +53,8 @@ export const BulkEmailModal = ({
     );
   };
 
-  const filteredMembers = members.filter(
-    (m) => selectedTeamIds.includes(m.teamId)
+  const filteredMembers = members.filter((m) =>
+    selectedTeamIds.includes(m.teamId)
   );
 
   const handleSendEmails = () => {
