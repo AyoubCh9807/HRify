@@ -43,7 +43,6 @@ const MainDashboard = () => {
 
   const [showBulkEmailModal, setShowBulkEmailModal] = useState(false);
 
-
   const [members, setMembers] = useState<Member[]>([
     { id: "u1", name: "Alice", email: "aliceburgers@yopmail.com", teamId: "1" },
     { id: "u2", name: "Bob", email: "bobbyworking5@hotmail.com", teamId: "1" },
@@ -100,8 +99,7 @@ const MainDashboard = () => {
 
   return (
     <div className="flex min-h-screen font-sans bg-background) text-(--text-main)">
-
-    <Navbar/>
+      <Navbar />
 
       <main className="ml-64 mt-16 p-8">
         <div className="max-w-7xl mx-auto">
@@ -142,8 +140,7 @@ const MainDashboard = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-lg"
-                >Send Bulk Message</h3>
+                <h3 className="font-semibold text-lg">Send Bulk Message</h3>
                 <p className="text-(--text-uted) mt-1 text-sm">
                   Reach all members of a team instantly
                 </p>
@@ -347,10 +344,11 @@ const MainDashboard = () => {
                       </p>
                     </div>
                     <button
-                    onClick={() => {
+                      onClick={() => {
                         setShowFireModal(true);
-                    }}
-                    className="px-4 py-2 text-sm text-(--text-uted) hover:text-(--text-main) rounded-lg hover:bg-(--surface)">
+                      }}
+                      className="px-4 py-2 text-sm text-(--text-uted) hover:text-(--text-main) rounded-lg hover:bg-(--surface)"
+                    >
                       Manage
                     </button>
                   </div>
@@ -419,17 +417,18 @@ const MainDashboard = () => {
         )}
       </AnimatePresence>
       <AnimatePresence>
-  {showBulkEmailModal && (
-    <BulkEmailModal
-      activated={showBulkEmailModal}
-      setActivated={setShowBulkEmailModal}
-      teams={teams}
-      members={members}
-      showToast={showToast}
-    />
-  )}
-</AnimatePresence>
-
+        {showBulkEmailModal && (
+          <BulkEmailModal
+            activated={showBulkEmailModal}
+            setActivated={setShowBulkEmailModal}
+            teams={teams}
+            members={members}
+            selectedTeamId={selectedTeamId}
+            selectedMembers={selectedMembers} 
+            showToast={showToast}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
